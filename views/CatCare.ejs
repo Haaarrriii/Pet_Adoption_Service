@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Browse
+    </title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/styles/styles8.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <script>
+      function updateDateTime() {
+        const now = new Date();
+        const year = now.getFullYear();
+        const month = now.toLocaleString('en-US', { month: 'long' });
+        const day = now.getDate();
+        const hours = now.getHours().toString().padStart(2, '0');
+        const minutes = now.getMinutes().toString().padStart(2, '0');
+        const seconds = now.getSeconds().toString().padStart(2, '0');
+
+        document.getElementById('dateTime').textContent = `${month} ${day}, ${year} ${hours}:${minutes}:${seconds}`;
+      }
+      document.addEventListener('DOMContentLoaded', () => {
+        updateDateTime();
+        setInterval(updateDateTime, 1000);
+      });
+    </script>
+  </head>
+  <body>
+  <div class="wrapper">
+    <%- include('partials/header.ejs') %>
+  
+    <div class="container">
+        <ul class="list">
+          <li> <a href="/Home" class="side">Home</a></li>
+          
+          <li> <a href="/Find" class="side">Find a dog/cat</a></li>
+          <li> <a href="/createAccount "class="side">Create Account</a></li>
+          <li> <a href="/DogCare" class="side">Dog Care</a></li>
+          <li> <a href="/CatCare" class="main">Cat Care</a></li>
+          <li> <a href="/GiveAway" class="side">Have a pet to give away</a></li>
+          <li> <a href="/logOut" class="side">Log out</a></li>
+          <li> <a href="/Contact" class="side">Contact Us</a></li>
+        </ul>
+       <div class="catCare">
+        <h2>Here's the guide to Cat Care!</h2>
+        <h3>Creating a Cat-Friendly Home</h3>
+        <ul>
+            <li><strong>Essential Supplies:</strong> Provide a litter box, scratching post, food and water dishes, and a cozy bed.</li>
+            <li><strong>Safe Spaces:</strong> Create hiding spots and vertical spaces for climbing, such as shelves or cat trees.</li>
+            <li><strong>Toxic Plants:</strong> Keep plants like lilies and poinsettias out of reach, as they can be harmful to cats.</li>
+        </ul>
+        <h3>Health and Wellness</h3>
+        <ul>
+            <li><strong>Veterinary Visits:</strong> Schedule regular check-ups for vaccinations, dental care, and overall health monitoring.</li>
+            <li><strong>Parasite Control:</strong> Use flea, tick, and worm preventatives as recommended by your vet.</li>
+            <li><strong>Grooming:</strong> Regular brushing helps manage shedding and prevents matting, especially in long-haired breeds.</li>
+        </ul>
+
+        <h3>Socialization and Bonding</h3>
+        <ul>
+            <li><strong>Gentle Interaction:</strong> Handle your cat gently and respect their space to build trust and reduce stress.</li>
+            <li><strong>Positive Reinforcement:</strong> Use treats and praise to reward desired behaviors and strengthen your bond.</li>
+            <li><strong>Socialization:</strong> Gradually introduce your cat to new people, pets, and environments to build confidence.</li>
+        </ul><br>
+
+      <p>For more awesome cat care tips, visit <a href="https://cats.com/cat-care-for-beginners">Cats.com</a></p>
+       </div>
+      </div>
+      <%- include('partials/footer.ejs') %>
+</div>
+</body>
+    </html>

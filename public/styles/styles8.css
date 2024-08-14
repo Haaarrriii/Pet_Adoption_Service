@@ -1,0 +1,274 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+   
+}
+
+#logo{
+  width:100px;
+  height:80px;
+ 
+  border-radius: 50%;
+  padding-left:20px;
+  
+  
+}
+header {
+  width: 100%;
+  height: 130px;
+  justify-content: center;
+  background-color: blanchedalmond;
+  font-size: 50px;
+  display: flex;
+  z-index: 1;
+  margin:0;
+  border-radius: 10px;
+}
+
+.name>p{
+  margin-top:10px;
+  font-family:monospace;
+  color:white;
+}
+
+.container {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+
+  
+}
+
+.list a{
+  text-decoration: none;
+  color:white;
+  font-size: 25px;
+
+}
+.side:hover{
+  background-color:blanchedalmond;
+  border-radius: 20px;
+  color:black;
+  
+}
+
+.main{
+  background-color:black;
+  padding:15px;
+  display:flex;
+  border-radius:20px;
+  margin-top: 5px;
+
+}
+.list{
+  list-style-type: none;
+  min-width:250px;
+  max-width:250px;
+  position:relative;
+  z-index: 2;
+  background-color:#008080;
+  padding:0;
+  width:fit-content;
+  margin:0;
+  min-height:100%;
+  padding-bottom:100px;
+  font-family: monospace;
+  border-radius:20px;
+  
+  font-weight: bolder;
+  
+}
+
+.side{
+  display:flex;
+  padding:15px;
+  cursor:pointer;
+  justify-content: stretch;
+  margin:0;
+  padding-bottom:25px;
+  
+}
+
+
+footer {
+  background-color: blanchedalmond;
+  min-height:150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+
+.content{
+  padding:15px;
+}
+
+.content p{
+  font-size:large;
+  font-family:'Courier New', Courier, monospace;
+  
+}
+.content li{
+  font-size: large;
+  padding-bottom:10px;
+}
+
+.adopt{
+  font-size:medium;
+  font-family:'Courier New', Courier, monospace
+}
+
+.content h2{
+  font-family: 'Courier New', Courier, monospace;
+}
+.styled-hr {
+  border: none;
+  height: 2px;
+  background: linear-gradient(to right, #333, #666, #333);
+  
+}
+.form{
+  font-size: large;
+  font-family: 'Courier New', Courier, monospace;
+  padding:15px;
+}
+.form p{
+  font-family: monospace;
+  font-size: 20px;
+}
+
+#button{
+  font-family: monospace;
+  font-size: large;
+}
+
+.dogCare{
+  font-size: large;
+  font-family: 'Courier New', Courier, monospace;
+  padding:15px;
+}
+
+.footer a{
+  font-size: medium;
+}
+
+.catCare{
+  font-size: large;
+  font-family: 'Courier New', Courier, monospace;
+  padding:15px;
+}
+.name{
+  border-radius:20px;
+  background-color: #008080;
+  margin:0 auto;
+  flex-direction: row;
+  width:50%;
+  height:100px;
+  justify-content: center;
+  padding-top:20px;
+  font-size: 50px;
+  display: flex;
+  z-index: 4;
+  margin-top:5px;
+  box-shadow: 0 0 20px 0#008080;
+  position:absolute;
+  
+}
+
+.form2{
+  font-size: large;
+  font-family: 'Courier New', Courier, monospace;
+  padding:15px;
+}
+
+.contact{
+  font-size: large;
+  font-family: 'Courier New', Courier, monospace;
+  padding:15px;
+}
+
+.find li{
+  padding-bottom:10px;
+}
+
+.marker1{
+  width:90%;
+  height:5px;
+  background-color:#008080;
+  z-index: 3;
+  margin-top:65px;
+  box-shadow: 0 0 20px 0#008080;
+}
+
+.end{
+  border-radius:20px;
+  background-color: #008080;
+  margin:0 auto;
+  flex-direction: row;
+  width:25%;
+  height:60px;
+  justify-content: center;
+  padding-top:25px;
+  display: flex;
+  z-index: 4;
+  margin-top:25px;
+  box-shadow: 0 0 20px 0#008080;
+  position:absolute;
+  
+  
+}
+.marker2{
+  width:100%;
+  height:5px;
+  background-color:#008080;
+  z-index: 3;
+  margin-top:40px;
+  box-shadow: 0 0 20px 0#008080;
+}
+
+.end>p{
+  margin:0 auto;
+  font-family:monospace;
+  font-size: 15px;
+  padding-top:0;
+  color:white;
+
+  
+}
+.end a{
+  font-size: 15px;
+  color:white;
+}
+.date-time{
+  margin-top:60px;
+  margin-right:10px;
+  z-index: 4;
+  font-size: small;
+  padding-left: 5px;
+}
+
+.gallery {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px 10px;
+}
+
+.gallery img {
+  width: 100%;
+  max-width:200px;
+  height:200px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.gallery::after {
+  content: "";
+  width: 200px;
+}

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Find
+    </title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="styles/styles8.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <script>
+      function updateDateTime() {
+        const now = new Date();
+        const year = now.getFullYear();
+        const month = now.toLocaleString('en-US', { month: 'long' });
+        const day = now.getDate();
+        const hours = now.getHours().toString().padStart(2, '0');
+        const minutes = now.getMinutes().toString().padStart(2, '0');
+        const seconds = now.getSeconds().toString().padStart(2, '0');
+        
+        document.getElementById('dateTime').textContent = `${month} ${day}, ${year} ${hours}:${minutes}:${seconds}`;
+      }
+      
+      document.addEventListener('DOMContentLoaded', () => {
+        updateDateTime();
+        setInterval(updateDateTime, 1000);
+      });
+    </script>
+  </head>
+  <body>
+  <div class="wrapper">
+    
+    <%- include('partials/header.ejs') %>
+    <div class="container">
+        <ul class="list">
+          <li> <a href="/Home" class="side">Home</a></li>
+        
+          <li> <a href="/Find" class="main">Find a dog/cat</a></li>
+          <li> <a href="/createAccount "class="side">Create Account</a></li>
+          <li> <a href="/DogCare" class="side">Dog Care</a></li>
+          <li> <a href="/CatCare" class="side">Cat Care</a></li>
+          <li> <a href="/GiveAway" class="side">Have a pet to give away</a></li>
+          <li> <a href="/logOut" class="side">Log out</a></li>
+          <li> <a href="/Contact" class="side">Contact Us</a></li>
+        </ul>
+        <div class="form">
+        <p>Please fill in the information for the pet you want
+        </p><hr class="styled-hr">
+        <form id="petForm" action="/pets" method="POST">
+        <ul class="find">
+        <li> <label for="type">Type
+          <select id="type" name="type">
+            <option value="">Select a pet type</option>
+            <option value="dog">Dog</option>
+            <option value="cat">Cat</option>
+          </select>
+        </label></li>
+      <li><label for="breed">Breed of Dog/ Cat
+          <select id="breed" name="breed">
+            <option value="">Select a breed</option>
+            <option value="breed 1">Breed 1</option>
+            <option value="breed 2">Breed 2</option>
+          </select>
+        </label></li>
+      <li> <label for="age">Preferred age of animal
+          <select id="age" name="age">
+            <option value="">Select preferred age</option>
+            <option value="does-not-matter">Doesn't matter</option>
+          </select>
+        </label></li>
+      <li><label for="gender">Preferred Gender:
+            <select id="gender" name="gender">
+                <option value="">Select a gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+            </select>
+          </label></li>
+         <li> <label for="tolerance1">
+            Tolerance:  <input type="checkbox" id="tolerance1">Gets along with  small children</label>
+            <label for="tolerance2"><input type="checkbox" id="tolerance2">Gets along with dogs</label>
+          <label> <input type="checkbox" id="tolerance3">Gets along with cats
+          </label></li></ul><br>
+          <input type="submit" id="button1" value="Submit" > <input type="reset" id="button2" value="Clear" >
+        </form>
+       
+      </div>
+      </div>
+      <%- include('partials/footer.ejs') %>
+      
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+      document.getElementById('petForm').addEventListener('submit', function(event) {
+          const type = document.getElementById('type').value;
+          const breed = document.getElementById('breed').value;
+          const age = document.getElementById('age').value;
+          const gender = document.getElementById('gender').value;
+
+          if (type === '' || breed === '' || age === '' || gender === '') {
+              event.preventDefault(); 
+              alert('Please fill in all the required fields in the form');
+          }
+      });
+  });
+</script>
+</body>
+    </html>

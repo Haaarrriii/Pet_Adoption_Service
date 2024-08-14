@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Create Account</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="styles/styles8.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+      function validateForm() {
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+        const usernamePattern = /^[a-zA-Z0-9]+$/;
+        const passwordPattern = /^(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]{4,}$/;
+
+        if (!usernamePattern.test(username)) {
+          alert('Username can only contain letters and digits.');
+          return false;
+        }
+
+        if (!passwordPattern.test(password)) {
+          alert('Password must be at least 4 characters long, and contain at least one letter and one digit.');
+          return false;
+        }
+
+        return true;
+      }
+    </script>
+  </head>
+  <body>
+    <div class="wrapper">
+      <%- include('partials/header.ejs') %>
+      <div class="container">
+        <ul class="list">
+          <li> <a href="/Home" class="side">Home</a></li>
+          
+          <li> <a href="/Find" class="side">Find a dog/cat</a></li>
+          <li> <a href="/CreateAccount" class="main">Create Account</a></li>
+          <li> <a href="/DogCare" class="side">Dog Care</a></li>
+          <li> <a href="/CatCare" class="side">Cat Care</a></li>
+          <li> <a href="/GiveAway" class="side">Have a pet to give away</a></li>
+          <li> <a href="/logOut" class="side">Log out</a></li>
+          <li> <a href="/Contact" class="side">Contact Us</a></li>
+        </ul>
+        <div class="form">
+          <h2>Create a New Account</h2>
+          <p>Username can contain letters (both upper and lower case) and digits only.<br>
+          Password must be at least 4 characters long, and contain at least one letter and one digit.</p>
+          <form id="createAccountForm" action="/createAccount" method="POST" onsubmit="return validateForm()">
+            <label for="username">Username:
+              <input type="text" id="username" name="username" required autocomplete="off">
+            </label><br>
+            <label for="password">Password:
+              <input type="password" id="password" name="password" required autocomplete="off">
+            </label><br>
+            <input type="submit" id="submitButton" value="Create Account">
+          </form>
+          <div id="message">
+            <% if (message) { %>
+              <p><%= message %></p>
+            <% } %>
+          </div>
+        </div>
+      </div>
+      <%- include('partials/footer.ejs') %>
+    </div>
+  </body>
+</html>

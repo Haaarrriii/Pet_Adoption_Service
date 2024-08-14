@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Browse
+    </title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="styles/styles8.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <script>
+      function updateDateTime() {
+        const now = new Date();
+        const year = now.getFullYear();
+        const month = now.toLocaleString('en-US', { month: 'long' });
+        const day = now.getDate();
+        const hours = now.getHours().toString().padStart(2, '0');
+        const minutes = now.getMinutes().toString().padStart(2, '0');
+        const seconds = now.getSeconds().toString().padStart(2, '0');
+        
+        document.getElementById('dateTime').textContent = `${month} ${day}, ${year} ${hours}:${minutes}:${seconds}`;
+      }
+      
+      document.addEventListener('DOMContentLoaded', () => {
+        updateDateTime();
+        setInterval(updateDateTime, 1000);
+      });
+    </script>
+  </head>
+  <body>
+  <div class="wrapper">
+    
+    <%- include('partials/header.ejs') %>
+  
+    <div class="container">
+        <ul class="list">
+          <li> <a href="/Home" class="side">Home</a></li>
+       
+          <li> <a href="/Find" class="side">Find a dog/cat</a></li>
+          <li> <a href="/createAccount "class="side">Create Account</a></li>
+          <li> <a href="/DogCare" class="side">Dog Care</a></li>
+          <li> <a href="/CatCare" class="side">Cat Care</a></li>
+          <li> <a href="/GiveAway" class="main">Have a pet to give away</a></li>
+          <li> <a href="/logOut" class="side">Log out</a></li>
+          <li> <a href="/Contact" class="side">Contact Us</a></li>
+        </ul>
+        
+          <% if (typeof loggedIn === 'undefined' || !loggedIn) { %>
+            <form id="loginForm" action="/GiveAway" method="POST">
+              <label for="username">Username: </label>
+              <input type="text" id="username" name="username" required>
+              <br><br>
+              <label for="password">Password: </label>
+              <input type="password" id="password" name="password" required>
+              <br><br>
+              <input type="submit" value="Login">
+            </form>
+          <% } else { %>
+            <div class="form2" >
+              <h2>Please fill out the necessary information for giving away a pet</h2>
+              <form id="giveAway" action="/submitPet" method="POST">
+                <label for="type">Type
+                  <select id="type" name="type">
+                    <option>Select type</option>
+                    <option>Cat</option>
+                    <option>Dog</option>
+                  </select>
+                </label><br><br>
+                <label for="breed">Breed of Cat/Dog
+                  <select id="breed" name="breed">
+                    <option>Select breed</option>
+                    <option>Labrador-Poodle Mix</option>
+                    <option>Husky-Shepherd Mix</option>
+                    <option>Persian-Ragdoll Mix</option>
+                    <option>Bengal-Maine Coon Mix</option>
+                  </select>
+                </label><br><br>
+                <label for="age1">Age
+                  <input type="radio" name="age" id="age1" value="0-5">0-5 
+                </label>
+                <label for="age2">
+                  <input type="radio" name="age" id="age2" value="5-10">5-10
+                </label>
+                <label for="age3">
+                  <input type="radio" name="age" id="age3" value="10-15">10-15
+                </label>
+                <label for="age4">
+                  <input type="radio" name="age" id="age4" value=">15">Greater than 15
+                </label><br><br>
+                <label for="gender">Gender 
+                  <select id="gender" name="gender">
+                    <option>Select gender</option>
+                    <option>Male</option>
+                    <option>Female</option>
+                  </select>
+                </label><br><br>
+                <input type="checkbox" name="dogFriendly">Gets along with other dogs 
+                <input type="checkbox" name="catFriendly">Gets along with other cats 
+                <input type="checkbox" name="childFriendly">Suitable for a family with small children
+                <br><br>
+                <label for="petDescription">Tell us about your pet:</label>
+                <input type="text" name="bragging" id="petDescription">
+                <br><br>
+                <label for="familyName">Name of the current owner:</label>
+                <input type="text" name="familyName" id="familyName" placeholder="Family Name"> 
+                <input type="text" name="givenName" id="givenName" placeholder="Given Name">
+                <br><br>
+                <label for="email">Email Address:</label>
+                <input type="email" name="email" id="email" placeholder="Enter your Email">
+                <br><br>
+                <input id="button1" type="submit" value="Submit"> 
+                <input id="button2" type="reset" value="Clear">
+              </form>
+            </div>
+          <% } %>
+        
+        
+    </div>
+    
+    <%- include('partials/footer.ejs') %>
+
+</div>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+      document.getElementById('giveAway').addEventListener('submit', function(event) {
+        
+         
+          const type = document.getElementById('type').value;
+          const breed = document.getElementById('breed').value;
+          const age = document.querySelector('input[name="age"]:checked');
+          const gender = document.getElementById('gender').value;
+          const petDescription = document.getElementById('petDescription').value;
+          const familyName = document.getElementById('familyName').value;
+          const givenName = document.getElementById('givenName').value;
+          const email = document.getElementById('email').value;
+
+          if (type === '') {
+              
+              event.preventDefault(); 
+              alert('Please fill in all the required fields in the form');
+          }else if(breed === '') {
+            event.preventDefault(); 
+            alert('Please fill in all the required fields in the form');
+          }else if(!age) {
+            event.preventDefault(); 
+            alert('Please fill in all the required fields in the form');
+          }else if(gender === '') {
+            event.preventDefault(); 
+            alert('Please fill in all the required fields in the form');
+          }else if(petDescription.trim() === '') {
+            event.preventDefault(); 
+            alert('Please fill in all the required fields in the form');
+          }else if(familyName.trim() === '' || givenName.trim() === '') {
+            event.preventDefault(); 
+            alert('Please fill in all the required fields in the form');
+          }else if(!validateEmail(email)) {
+            event.preventDefault(); 
+            alert('Please fill in all the required fields in the form');
+          }else{
+              this.submit(); 
+          } 
+      });
+      //saw this on the internet :)
+      function validateEmail(email) {
+          const re = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+          return re.test(String(email).toLowerCase());
+      }
+  });
+</script>
+</body>
+    </html>

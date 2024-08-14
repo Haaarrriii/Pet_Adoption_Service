@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Contact
+    </title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="styles/styles8.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+
+    <script>
+  function updateDateTime() {
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = now.toLocaleString('en-US', { month: 'long' });
+    const day = now.getDate();
+    const hours = now.getHours().toString().padStart(2, '0');
+    const minutes = now.getMinutes().toString().padStart(2, '0');
+    const seconds = now.getSeconds().toString().padStart(2, '0');
+    
+    document.getElementById('dateTime').textContent = `${month} ${day}, ${year} ${hours}:${minutes}:${seconds}`;
+  }
+  
+  document.addEventListener('DOMContentLoaded', () => {
+    updateDateTime();
+    setInterval(updateDateTime, 1000);
+  });
+</script>
+  </head>
+  <body>
+  <div class="wrapper">
+    
+    <%- include('partials/header.ejs') %>
+    <div class="container">
+        <ul class="list">
+          <li> <a href="/Home" class="side">Home</a></li>
+      
+          <li> <a href="/Find" class="side">Find a dog/cat</a></li>
+          <li> <a href="/createAccount "class="side">Create Account</a></li>
+          <li> <a href="/DogCare" class="side">Dog Care</a></li>
+          <li> <a href="/CatCare" class="side">Cat Care</a></li>
+          <li> <a href="/GiveAway" class="side">Have a pet to give away</a></li>
+          <li> <a href="/logOut" class="side">Log out</a></li>
+          <li> <a href="/Contact" class="main">Contact Us</a></li>
+        </ul>
+        <div class="contact">
+
+        
+        <h2>Contact Information</h2><hr class="styled-hr">
+        <p><strong>Name: </strong>Harwinder Singh Mann</p>
+        <p><strong>Student ID: </strong>40293187</p>
+        <p><strong>Email: </strong>hmaan201@gmail.com</p>
+        <p><strong>Course: </strong>SOEN 287</p>
+        <p><strong>Term: </strong>Summer 2024</p>
+      </div>
+      </div>
+      <%- include('partials/footer.ejs') %>
+     
+</div>
+</body>
+    </html>
