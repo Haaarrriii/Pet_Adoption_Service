@@ -5,7 +5,6 @@ const session = require('express-session');
 
 const app = express();
 const port = 3000;
-
 // Set EJS as the templating engine
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
